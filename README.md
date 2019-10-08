@@ -6,7 +6,7 @@ This guide assumes the user is running Windows 10.
 Also, at least an Nvidia GPU (GTX 650 or newer).
 A lot of this borrows heavily from [--'s guide](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/install.html), couldn't have done it without him. I had to change enough things in my own installation process that
 
-### A quick foundation of what we're using:
+### A Quick Foundation of the Tools We Use:
 
 * [TensorFlow](https://en.wikipedia.org/wiki/TensorFlow): a free and open-source software library by Google that does multiple things, including machine learning. It is worth noting that you can run TensorFlow on your CPU or GPU, but for this tutorial, we will be running it on our GPU.
 
@@ -16,32 +16,34 @@ A lot of this borrows heavily from [--'s guide](https://tensorflow-object-detect
 
 * [CuDNN](https://developer.nvidia.com/cudnn) (aka the CUDA Deep Neural Network library): a GPU-accelerated library of primitives for deep neural networks. 
 
-### Directions
+## Directions
 
-#### GPU Setup
+### GPU Setup
 * [Download CUDA](https://developer.nvidia.com/cuda-90-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork) Toolkit v9.0 for Windows 10
 
-* Run through the installation
-    
-    -> [YouTube video](https://www.youtube.com/watch?v=RplXYjxgZbw) explaining the installation process (though, this installation uses different versions)
+* Run through the installation *(Here's a [YouTube video](https://www.youtube.com/watch?v=RplXYjxgZbw) explaining the installation process⁠—though, this guide uses different versions from those listed in the video)*
     
 * Make a [Nvidia developer account](https://developer.nvidia.com/rdp/cudnn-download) so you can download cuDNN
 
 * [Download cuDNN](https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.0.5/prod/9.0_20171129/cudnn-9.0-windows10-x64-v7) v7.0.5 Library for Windows 10
 
-* Unzip this file and move its contents (the folder called `cuda`) to be inside `<INSTALL_PATH>\NVIDIA GPU Computing Toolkit\CUDA\v9.0\`, where `<INSTALL_PATH>` points to the installation directory specified during the installation of the CUDA Toolkit. (By default `<INSTALL_PATH>` = `C:\Program Files`.)
+* Unzip this file and move its contents (the folder called `cuda`) to be inside `<INSTALL_PATH>\NVIDIA GPU Computing Toolkit\CUDA\v9.0\`, where `<INSTALL_PATH>` points to the installation directory specified during the installation of the CUDA Toolkit. *(By default,* `<INSTALL_PATH>` *=* `C:\Program Files`*)*
 
-* Add the following to your path (Click *Start*, search `env` to find "Edit the system environment variables", click `Environment Variables...`, then edit the system variable `Path`):
+* Add the following to your path *(Click *Start*, search* `env` *to find "Edit the system environment variables", click* `Environment Variables...`, *then edit the system variable* `Path`*):* TODO path commands
+
     `<INSTALL_PATH>\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin`
+    
     `<INSTALL_PATH>\NVIDIA GPU Computing Toolkit\CUDA\v9.0\libnvvp`
+    
     `<INSTALL_PATH>\NVIDIA GPU Computing Toolkit\CUDA\v9.0\extras\CUPTI\libx64`
+    
     `<INSTALL_PATH>\NVIDIA GPU Computing Toolkit\CUDA\v9.0\cuda\bin`
 
 * Optionally, you can update your GPU drivers now. If you selected "Express Installation" when downloading the CUDA Toolkit, your GPU drivers have probably been overwritten by the ones that come bundled with the toolkit, and are usually not the latest drivers. Visit Nvidia [here](http://www.nvidia.com/Download/index.aspx) and select the apropriate driver for your GPU and OS.
 
 * Congrats! Your GPU should now be set up.
 
-#### Virtual Environment Setup
+### Virtual Environment Setup
 * [Download Anaconda](https://www.anaconda.com/distribution/) for Python 3.7 and Windows 64
 
 * Launch the Anaconda prompt and setup a virtual env (we'll call ours TF-Env for this tutorial) with Python 3.5
@@ -88,7 +90,7 @@ A lot of this borrows heavily from [--'s guide](https://tensorflow-object-detect
    
 * Good job, your virtual environment is working!
 
-#### Python Packages
+### Python Packages
 
 * Making sure you still have TF-Env activated, install the following packages:
     ```
@@ -96,13 +98,11 @@ A lot of this borrows heavily from [--'s guide](https://tensorflow-object-detect
     pip install matplotlib==3.0.0
     ```
     Note the change from conda to pip⁠—normally it's better to avoid mixing conda and pip like this, but later on in this process, I ended up encountering trouble with a conda-installed matplotlib.
-    
- * TODO protobuf
  
  * TODO configure your PYTHONPATH (later i guess)
  A PYTHONPATH variable must be created that points to the \models, \models\research, and \models\research\slim directories.
  
- #### Directory Setup for the TensorFlow Object Detection API
+ ### Directory Setup for the TensorFlow Object Detection API
     
  * Create a folder in `C:` called `TensorFlow`. This will hold pretty much everything we do from here on out.
  
@@ -110,6 +110,30 @@ A lot of this borrows heavily from [--'s guide](https://tensorflow-object-detect
  
  * Unzip the file and extract the the “models-master” folder directly into the `C:\TensorFlow` folder you just created. Rename “models-master” to just “models”.
     
-    
+ * Your directory should now look like this:
+ 
+    ```
+    TensorFlow
+        └─ models
+            ├── official
+            ├── research
+            ├── samples
+            └── tutorials
+    ```
 
-#### References/Bibliography
+### Protobuf
+
+TODO
+
+### Misc To-Do
+
+Host the entire /Tensorflow on git or google drive
+Also, grab copies of the actual packages we use, too
+
+
+
+
+
+
+
+## References/Bibliography
